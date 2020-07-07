@@ -72,3 +72,16 @@ footer button{
     font-size:15px;
     cursor:pointer;
 }
+
+.msg{
+  width:100%;
+}
+.msg-Bubble{
+  color:white;
+  background: black;
+  border-radius:6px;
+  border:1px solid grey;
+  padding:4px 10px;
+  display: inline-block;
+  margin:5px;
+}
