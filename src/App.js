@@ -1,11 +1,26 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import './App.css';
 import Footer from './footer'
 import Message from './message'
-
+import {initialize, useDatu} from "datu"
+import {BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
-  const [messages,setMessages] = useState([])
+  useEffect(()=>{
+    const path = window.location.pathname
+    if(path.length<2)
+    {
+      window.location.pathname='/home'
+    }
+  }, [])
+  return <BrowserRouter>
+    <Route path="/:room" component={Room} />
+  </BrowserRouter>
+}
+
+function Room(props) {
+  const room = props.match.params.room
+  const {messages, send} = useDatu(room)
   return (
     <main className="main">
       <header>
@@ -13,14 +28,30 @@ function App() {
         <span>Chat App</span>
       </header>
 
-      {messages.map((m,i)=> <Message key={i} text={m} />)}
-      
+      <div className="messages">
+      {messages.map((m,i)=> {
+        return <Message key={i} text={m.text} />
+      })}
+      </div>
+
       <Footer 
-        onSend={(text)=> setMessages([...messages, text])}
+        onSend={text=> send({text, room})}
       />
 
     </main>
   );
 }
 
+
 export default App;
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA6XwOdQm7l3ScoTFEmEJx6do49eRbgXmY",
+  authDomain: "hichatsnap.firebaseapp.com",
+  databaseURL: "https://hichatsnap.firebaseio.com",
+  projectId: "hichatsnap",
+  storageBucket: "hichatsnap.appspot.com",
+  messagingSenderId: "589457684546",
+  appId: "1:589457684546:web:ce74ebcff49b47560915db"
+};
+initialize(firebaseConfig)

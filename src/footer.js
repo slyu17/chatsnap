@@ -7,15 +7,17 @@ function Footer(props){
       onChange={e=> setText(e.target.value)}
       placeholder="Type Your Message Here"
       onKeyPress={e=> {
-        if(e.key==='Enter') {
+        if(e.key==='Enter'&& text) {
           props.onSend(text)
           setText('')
         }}
       }
     />
     <button onClick={()=> {
-        props.onSend(text)
-        setText('')
+        if(text){
+          props.onSend(text)
+          setText('')
+        }
       }}>
       ↑
     </button>
