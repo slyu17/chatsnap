@@ -32,6 +32,7 @@ header{
     display:flex;
     align-items:center;
     font-size:30px;
+    justify-content: space-between;
 }
 header img {
     height: 40px;
@@ -45,6 +46,7 @@ footer {
     display:flex;
     position:relative;
     padding:5px 15px;
+    margin-top: 12px;
 }
 
 footer input{
@@ -75,15 +77,22 @@ footer button{
 
 .msg{
   width:100%;
+  display: flex;
+  font-size: large;
 }
 .msg-Bubble{
   color:white;
   background: black;
-  border-radius:6px;
+  border-radius:10px;
   border:1px solid grey;
   padding:4px 10px;
   display: inline-block;
   margin:5px;
+}
+
+.msg-name{
+  font-size: 11px;
+  margin-left: 8px;
 }
 
 .messages{
@@ -91,4 +100,41 @@ footer button{
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.pickName{
+  margin-right:12px;
+  display:flex;
+  align-items: center;
+}
+.pickName svg{
+  margin-left:5px;
+  cursor: pointer;
+}
+.pickName svg:hover{
+  transform:scale(1.2);
+}
+.pickName input {
+  border-radius:12px;
+  outline:none;
+  border:1px solid white;
+  padding-left:8px;
+  background-color: black;
+  color: white;
+  height: 25px;
+  margin-top: 10px;
+}
+
+.save{
+  margin-top: 10px;
+}
+
+.edit{
+  margin-top: 8px;
+}
+
+.savedName{
+  margin-top: 8px;
+  font-size: 30px;
+  margin-right: 5px;
 }
